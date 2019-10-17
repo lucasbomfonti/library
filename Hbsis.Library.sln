@@ -3,31 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Api", "Hbsis.Library.Api\Hbsis.Library.Api.csproj", "{EE49932F-29F7-4E40-B9E4-A34BB66F0A9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Api", "Hbsis.Library.Api\Hbsis.Library.Api.csproj", "{EE49932F-29F7-4E40-B9E4-A34BB66F0A9A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{E2D8BAB4-DDC7-48BD-8A87-095408BD8E3B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Api", "1 - Api", "{E2D8BAB4-DDC7-48BD-8A87-095408BD8E3B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{9C778E70-4A0F-4CFC-8DD0-7CD1F8C27B83}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Domain", "5 - Domain", "{9C778E70-4A0F-4CFC-8DD0-7CD1F8C27B83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Domain", "Hbsis.Library.Domain\Hbsis.Library.Domain.csproj", "{79F3BAAA-7641-4F1A-A16C-D677878FA658}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Domain", "Hbsis.Library.Domain\Hbsis.Library.Domain.csproj", "{79F3BAAA-7641-4F1A-A16C-D677878FA658}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2EEDC357-62E6-4B81-80A8-DCDCDFF3A472}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Core", "4 - Core", "{2EEDC357-62E6-4B81-80A8-DCDCDFF3A472}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{1985E281-2AD5-4136-B331-C4E1EA273DB0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Business", "4.1 - Business", "{1985E281-2AD5-4136-B331-C4E1EA273DB0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{7901D074-547C-4569-A786-D003F16C78F7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Infrastructure", "4.2 - Infrastructure", "{7901D074-547C-4569-A786-D003F16C78F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{CDE06B8C-84CD-4002-9563-82D2E75277AD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - CrossCutting", "3 - CrossCutting", "{CDE06B8C-84CD-4002-9563-82D2E75277AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Business", "Hbsis.Library.Business\Hbsis.Library.Business.csproj", "{A0E60992-6ACA-4DC4-8C76-0FCC402EE502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Business", "Hbsis.Library.Business\Hbsis.Library.Business.csproj", "{A0E60992-6ACA-4DC4-8C76-0FCC402EE502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Data", "Hbsis.Library.Data\Hbsis.Library.Data.csproj", "{54B69455-1E2E-434B-9758-DA0CBCF8F163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Data", "Hbsis.Library.Data\Hbsis.Library.Data.csproj", "{54B69455-1E2E-434B-9758-DA0CBCF8F163}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.CrossCutting", "Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj", "{285FC9B1-C7A6-4682-8C6A-CC72D93AA34B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.CrossCutting", "Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj", "{285FC9B1-C7A6-4682-8C6A-CC72D93AA34B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{B1F7DD2A-59EA-4C76-9378-EACC31A2B3C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{B1F7DD2A-59EA-4C76-9378-EACC31A2B3C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Application", "Hbsis.Library.Application\Hbsis.Library.Application.csproj", "{133769A7-7972-4CD2-BF6D-713414B2D0FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Application", "Hbsis.Library.Application\Hbsis.Library.Application.csproj", "{133769A7-7972-4CD2-BF6D-713414B2D0FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Ioc", "Hbsis.Library.Ioc\Hbsis.Library.Ioc.csproj", "{C998104A-7867-42D0-869F-139B12A2FA1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{133769A7-7972-4CD2-BF6D-713414B2D0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{133769A7-7972-4CD2-BF6D-713414B2D0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{133769A7-7972-4CD2-BF6D-713414B2D0FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C998104A-7867-42D0-869F-139B12A2FA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C998104A-7867-42D0-869F-139B12A2FA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C998104A-7867-42D0-869F-139B12A2FA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C998104A-7867-42D0-869F-139B12A2FA1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{54B69455-1E2E-434B-9758-DA0CBCF8F163} = {7901D074-547C-4569-A786-D003F16C78F7}
 		{285FC9B1-C7A6-4682-8C6A-CC72D93AA34B} = {CDE06B8C-84CD-4002-9563-82D2E75277AD}
 		{133769A7-7972-4CD2-BF6D-713414B2D0FA} = {B1F7DD2A-59EA-4C76-9378-EACC31A2B3C1}
+		{C998104A-7867-42D0-869F-139B12A2FA1A} = {7901D074-547C-4569-A786-D003F16C78F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C4A912A-3932-41A3-B62F-76CCFC010F75}
