@@ -1,18 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hbsis.Library.Business\Hbsis.Library.Business.csproj" />
-    <ProjectReference Include="..\Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
-      <HintPath>..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Hbsis.Library.Business\Hbsis.Library.Business.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

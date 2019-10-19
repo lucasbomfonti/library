@@ -2,7 +2,6 @@
 using Hbsis.Library.Application.Contracts;
 using Hbsis.Library.Business.Service.Contracts;
 using Hbsis.Library.CrossCutting.Filter;
-using Hbsis.Library.CrossCutting.Filter.Base;
 using Hbsis.Library.CrossCutting.Interop.Dto.Book;
 using Hbsis.Library.CrossCutting.Interop.ViewModel.Book;
 using Hbsis.Library.Data.RepositoryReadOnly.Contracts;

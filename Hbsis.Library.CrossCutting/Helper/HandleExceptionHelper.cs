@@ -1,11 +1,11 @@
 ﻿using Hbsis.Library.CrossCutting.Exceptions;
 using Hbsis.Library.CrossCutting.Interop.Dto;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Hbsis.Library.CrossCutting.Helper
 {

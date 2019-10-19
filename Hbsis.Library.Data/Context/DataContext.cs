@@ -15,19 +15,41 @@ namespace Hbsis.Library.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer(EnvironmentProperties.ConnectionString);
+                optionsBuilder = GetConfiguration(optionsBuilder);
             }
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        public virtual void UpdateDatabase()
+        {
+            if (Database.IsInMemory())
+            {
+                Database.EnsureCreated();
+
+                return;
+            }
+
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.RemovePluralizingTableNameConvention();
             modelBuilder.RemoveCascadeDeleteBehavior();
-
             modelBuilder.SetDateTimeColumnType();
+        }
+
+        protected virtual DbContextOptionsBuilder GetConfiguration(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!string.IsNullOrEmpty(EnvironmentProperties.ConnectionString))
+            {
+                optionsBuilder.UseSqlServer(EnvironmentProperties.ConnectionString);
+                return optionsBuilder;
+            }
+
+            optionsBuilder.UseInMemoryDatabase(EnvironmentProperties.DatabaseName);
+            return optionsBuilder;
         }
     }
 

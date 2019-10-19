@@ -1,5 +1,6 @@
 ﻿using Hbsis.Library.Application.Mapper;
 using Hbsis.Library.CrossCutting.Helper;
+using Hbsis.Library.Data.Seed;
 using Hbsis.Library.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,7 @@ namespace Hbsis.Library.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDependencyInjections();
             MapperConfig.RegisterMappings();
+            DbRunner.UpdateDatabase();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Library", Version = "v1" });
