@@ -1,12 +1,12 @@
-﻿using Hbsis.Library.CrossCutting.Interop.Base;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Hbsis.Library.CrossCutting.Filter.Base;
 using Hbsis.Library.CrossCutting.Interop.Dto;
 using Hbsis.Library.CrossCutting.Interop.ViewModel;
 using Hbsis.Library.Data.Context;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Hbsis.Library.Data.RepositoryReadOnly.Contracts
+namespace Hbsis.Library.Data.RepositoryReadOnly.Contracts.Base
 {
     public interface IBaseRepositoryReadOnly<T, TT> where T : class where TT : BaseFilter
     {

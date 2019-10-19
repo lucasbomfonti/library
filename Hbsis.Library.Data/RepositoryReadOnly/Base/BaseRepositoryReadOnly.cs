@@ -1,14 +1,16 @@
-﻿using Hbsis.Library.CrossCutting.Interop.Base;
+﻿using Hbsis.Library.CrossCutting.Exceptions;
 using Hbsis.Library.CrossCutting.Interop.Dto;
 using Hbsis.Library.CrossCutting.Interop.ViewModel;
 using Hbsis.Library.Data.Context;
-using Hbsis.Library.Data.RepositoryReadOnly.Contracts;
+using Hbsis.Library.Data.RepositoryReadOnly.Contracts.Base;
 using Hbsis.Library.Domain.Base;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hbsis.Library.CrossCutting.Filter.Base;
 
 namespace Hbsis.Library.Data.RepositoryReadOnly.Base
 {
@@ -23,22 +25,22 @@ namespace Hbsis.Library.Data.RepositoryReadOnly.Base
 
         public async Task<T> Find(Guid id)
         {
-            return await Context.Set<T>().FindAsync(id);
+            return await Context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException();
         }
 
-        public async Task<T> Find(Guid id, DataContext context)
+        public virtual async Task<T> Find(Guid id, DataContext context)
         {
-            return await context.Set<T>().FindAsync(id);
+            return await context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException();
         }
 
-        public async Task<List<T>> All()
+        public virtual async Task<List<T>> All()
         {
             return await Task.FromResult(Context.Set<T>().Where(w => w.Active).ToList());
         }
 
-        public async Task<ResponseDto<T>> Search(RequestViewModel<TT> request)
+        public virtual async Task<ResponseDto<T>> Search(RequestViewModel<TT> request)
         {
-            var query = Context.Set<T>().AsQueryable();
+            var query = Context.Set<T>().Where(w => w.Active).AsQueryable();
             query = Filter(request, query, Context);
 
             var total = query.Select(s => 1).Count();
@@ -66,9 +68,29 @@ namespace Hbsis.Library.Data.RepositoryReadOnly.Base
             return query;
         }
 
-        public async Task<ResponseDto<T>> Search(RequestViewModel<TT> request, DataContext context)
+        public virtual async Task<ResponseDto<T>> Search(RequestViewModel<TT> request, DataContext context)
         {
-            throw new NotImplementedException();
+            var query = context.Set<T>().Where(w => w.Active).AsQueryable();
+            query = Filter(request, query, context);
+
+            var total = query.Select(s => 1).Count();
+            var skip = request.Page > 1 ? (request.Page - 1) * request.PerPage : 0;
+
+            if (total <= request.PerPage)
+            {
+                skip = 0;
+                request.Page = 1;
+            }
+
+            var temp = query.Skip(skip).Take(request.PerPage);
+
+            return await Task.FromResult(new ResponseDto<T>
+            {
+                CurrentPage = request.Page,
+                Data = ExtractFromContext(temp.ToList()),
+                PerPage = request.PerPage,
+                Total = total
+            });
         }
 
         protected TE ExtractFromContext<TE>(TE dto)
@@ -88,9 +110,6 @@ namespace Hbsis.Library.Data.RepositoryReadOnly.Base
             return ExtractFromContext(dto.ToList());
         }
 
-        public DataContext GetContext()
-        {
-            throw new NotImplementedException();
-        }
+        public DataContext GetContext() => new DataContext();
     }
 }

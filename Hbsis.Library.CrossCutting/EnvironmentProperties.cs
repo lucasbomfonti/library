@@ -2,6 +2,6 @@
 {
     public static class EnvironmentProperties
     {
-        public const string ConnectionString = "";
+        public const string ConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True";
     }
 }

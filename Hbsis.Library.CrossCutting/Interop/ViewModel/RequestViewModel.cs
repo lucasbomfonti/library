@@ -1,4 +1,4 @@
-﻿using Hbsis.Library.CrossCutting.Interop.Base;
+﻿using Hbsis.Library.CrossCutting.Filter.Base;
 
 namespace Hbsis.Library.CrossCutting.Interop.ViewModel
 {

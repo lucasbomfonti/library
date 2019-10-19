@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.Data\Hbsis.Library.Data.csproj" />
+  </ItemGroup>
+
 </Project>

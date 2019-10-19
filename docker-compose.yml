@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  hbsis.library.api:
+    image: ${DOCKER_REGISTRY-}hbsislibraryapi
+    build:
+      context: .
+      dockerfile: Hbsis.Library.Api\Dockerfile
+    networks:
+      - network
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: database
+    ports:
+      - 1433:1433
+    environment:
+      - 'ACCEPT_EULA=Y'
+      - 'SA_PASSWORD=Hbsis@1234'
+    networks:
+      - network
+
+networks:
+  network:
+    external: true 

@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hbsis.Library.Application\Hbsis.Library.Application.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.Business\Hbsis.Library.Business.csproj" />
     <ProjectReference Include="..\Hbsis.Library.Data\Hbsis.Library.Data.csproj" />
   </ItemGroup>
 

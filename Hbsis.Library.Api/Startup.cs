@@ -1,9 +1,12 @@
-﻿using Hbsis.Library.Ioc;
+﻿using Hbsis.Library.Application.Mapper;
+using Hbsis.Library.CrossCutting.Helper;
+using Hbsis.Library.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Hbsis.Library.Api
 {
@@ -21,6 +24,11 @@ namespace Hbsis.Library.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDependencyInjections();
+            MapperConfig.RegisterMappings();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Library", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,8 +38,14 @@ namespace Hbsis.Library.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware(typeof(HandleExceptionHelper));
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Library");
+                c.RoutePrefix = string.Empty;
+            });
         }
     }
 }

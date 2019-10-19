@@ -1,4 +1,4 @@
-﻿namespace Hbsis.Library.CrossCutting.Interop.Base
+﻿namespace Hbsis.Library.CrossCutting.Filter.Base
 {
     public class BaseFilter
     {
