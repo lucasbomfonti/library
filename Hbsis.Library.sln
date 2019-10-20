@@ -35,7 +35,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{9B1A7D8D-2839-45C8-BB53-A09C53410252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hbsis.Library.Api.Test", "Hbsis.Library.Api.Test\Hbsis.Library.Api.Test.csproj", "{B16B1993-F253-4D44-98B5-81626AEC7727}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hbsis.Library.Api.Test", "Hbsis.Library.Api.Test\Hbsis.Library.Api.Test.csproj", "{B16B1993-F253-4D44-98B5-81626AEC7727}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

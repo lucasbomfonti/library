@@ -22,57 +22,57 @@ namespace Hbsis.Library.Business.Service.Base
             BaseRepository = baseRepository;
         }
 
-        public async Task<Guid> Create(T dto)
+        public virtual async Task<Guid> Create(T dto)
         {
             return await BaseRepository.Create(dto);
         }
 
-        public async Task<Guid> Create(T dto, DataContext context)
+        public virtual async Task<Guid> Create(T dto, DataContext context)
         {
             return await BaseRepository.Create(dto, context);
         }
 
-        public async Task<T> Update(T dto)
+        public virtual async Task<T> Update(T dto)
         {
             return await BaseRepository.Update(dto);
         }
 
-        public async Task<T> Update(T dto, DataContext context)
+        public virtual async Task<T> Update(T dto, DataContext context)
         {
             return await BaseRepository.Update(dto, context);
         }
 
-        public async Task Remove(Guid id)
+        public virtual async Task Remove(Guid id)
         {
             await BaseRepository.Remove(id);
         }
 
-        public async Task Remove(Guid id, DataContext context)
+        public virtual async Task Remove(Guid id, DataContext context)
         {
             await BaseRepository.Remove(id, context);
         }
 
-        public async Task<T> Find(Guid id)
+        public virtual async Task<T> Find(Guid id)
         {
             return await BaseRepositoryReadOnly.Find(id);
         }
 
-        public async Task<T> Find(Guid id, DataContext context)
+        public virtual async Task<T> Find(Guid id, DataContext context)
         {
             return await BaseRepositoryReadOnly.Find(id, context);
         }
 
-        public async Task<List<T>> All()
+        public virtual async Task<List<T>> All()
         {
             return await BaseRepositoryReadOnly.All();
         }
 
-        public async Task<ResponseDto<T>> Search(RequestViewModel<TT> request)
+        public virtual async Task<ResponseDto<T>> Search(RequestViewModel<TT> request)
         {
             return await BaseRepositoryReadOnly.Search(request);
         }
 
-        public async Task<ResponseDto<T>> Search(RequestViewModel<TT> request, DataContext context)
+        public virtual async Task<ResponseDto<T>> Search(RequestViewModel<TT> request, DataContext context)
         {
             return await BaseRepositoryReadOnly.Search(request, context);
         }

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Hbsis.Library.CrossCutting.Exceptions;
+﻿using Hbsis.Library.CrossCutting.Exceptions;
+using Hbsis.Library.CrossCutting.Interop.Dto.User;
 using Hbsis.Library.Domain;
 using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Hbsis.Library.Api.Security
 {
@@ -17,18 +18,23 @@ namespace Hbsis.Library.Api.Security
 
             var user = _users.FirstOrDefault(f => f.Token.Equals(token));
             if (user == null)
-                throw new ForbiddenException();
+                throw new ForbiddenException("Without permission");
             return user;
         }
 
-        public static UserInfo RegisterUser(User profile)
+        public static LoginDto RegisterUser(User profile)
         {
             _users = _users ?? new List<UserInfo>();
 
             if (!_users.Any(a => a.Id.Equals(profile.Id)))
                 _users.Add(new UserInfo(profile.Id, Guid.NewGuid(), null));
 
-            return _users.FirstOrDefault(f => f.Id.Equals(profile.Id));
+             var user =_users.FirstOrDefault(f => f.Id.Equals(profile.Id));
+             return new LoginDto
+             {
+                 Username = profile.Username,
+                 Token = user.Token.ToString()
+             };
         }
 
         public static void Validate(HttpRequest request)
@@ -36,12 +42,12 @@ namespace Hbsis.Library.Api.Security
             var header = request.Headers.FirstOrDefault(f => f.Key.ToLower().Equals("authorization"));
 
             if (!header.Value.ToList().Any())
-                throw new UnauthorizedException();
+                throw new UnauthorizedException("Without authorization");
 
             var tokenRequest = header.Value.ToArray()[0];
             var token = Guid.Empty;
             if (string.IsNullOrEmpty(tokenRequest) || !Guid.TryParse(tokenRequest, out token) || token == Guid.Empty)
-                throw new UnauthorizedException();
+                throw new UnauthorizedException("Without authorization");
 
             var user = GetUser(token);
         }

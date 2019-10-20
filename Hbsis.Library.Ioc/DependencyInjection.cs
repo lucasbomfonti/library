@@ -19,6 +19,10 @@ namespace Hbsis.Library.Ioc
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IBookApplication, BookApplication>();
             services.AddScoped<IBookRepositoryReadOnly, BookRepositoryReadOnly>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserApplication, UserApplication>();
+            services.AddScoped<IUserRepositoryReadOnly, UserRepositoryReadOnly>();
             services.AddScoped<DataContext>();
         }
     }

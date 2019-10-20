@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -7,17 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.1" />
+    <PackageReference Include="Microsoft.NETCore.App" Version="2.1.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-    <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hbsis.Library.Api\Hbsis.Library.Api.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.Application\Hbsis.Library.Application.csproj" />
     <ProjectReference Include="..\Hbsis.Library.Business\Hbsis.Library.Business.csproj" />
     <ProjectReference Include="..\Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj" />
     <ProjectReference Include="..\Hbsis.Library.Data\Hbsis.Library.Data.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.Domain\Hbsis.Library.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helper\" />
   </ItemGroup>
 
 </Project>

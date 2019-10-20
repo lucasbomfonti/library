@@ -7,6 +7,7 @@ using Hbsis.Library.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Hbsis.Library.Api.Security;
 
 namespace Hbsis.Library.Api.Controllers
 {
@@ -18,22 +19,25 @@ namespace Hbsis.Library.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public new async Task<ActionResult<BookDto>> Find(Guid id) => await base.Find(id);
+        public new async Task<ActionResult> Find(Guid id) => await base.Find(id);
 
         [HttpGet]
-        public async Task<ActionResult<BookDto>> Get(int? page = null, int? perPage = null, string term = null, bool? ascending = null, BookOrdination? ordination = null)
+        public async Task<ActionResult> Get(int? page = null, int? perPage = null, string term = null, bool? ascending = null, BookOrdination? ordination = null)
         {
             var filter = new BookFilter(term, ascending, ordination);
             return await Get(page, perPage, filter);
         }
 
         [HttpPost]
-        public async new Task<ActionResult<BookDto>> Post([FromBody] BookInsertViewModel viewModel) => await base.Post(viewModel);
+        [AccessValidation]
+        public async new Task<ActionResult> Post([FromBody] BookInsertViewModel viewModel) => await base.Post(viewModel);
 
         [HttpPut]
-        public async Task<ActionResult<BookDto>> Put([FromBody] BookUpdateViewModel viewModel) => await Update(viewModel);
+        [AccessValidation]
+        public async Task<ActionResult> Put([FromBody] BookUpdateViewModel viewModel) => await Update(viewModel);
 
+        [AccessValidation]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BookDto>> Remove(Guid id) => await Delete(id);
+        public async Task<ActionResult> Remove(Guid id) => await Delete(id);
     }
 }

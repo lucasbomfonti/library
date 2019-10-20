@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hbsis.Library.Application\Hbsis.Library.Application.csproj" />
+    <ProjectReference Include="..\Hbsis.Library.CrossCutting\Hbsis.Library.CrossCutting.csproj" />
     <ProjectReference Include="..\Hbsis.Library.Ioc\Hbsis.Library.Ioc.csproj" />
   </ItemGroup>
 

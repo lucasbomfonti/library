@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hbsis.Library.CrossCutting.Interop.ViewModel.Book;
+using Hbsis.Library.CrossCutting.Interop.ViewModel.User;
 using Hbsis.Library.Domain;
 
 namespace Hbsis.Library.Application.Mapper
@@ -10,6 +11,9 @@ namespace Hbsis.Library.Application.Mapper
         {
             CreateMap<BookInsertViewModel, Book>();
             CreateMap<BookUpdateViewModel, Book>();
+
+            CreateMap<UserInsertViewModel, User>();
+            CreateMap<UserUpdateViewModel, User>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Hbsis.Library.CrossCutting.Exceptions;
+using Hbsis.Library.CrossCutting.Filter.Base;
 using Hbsis.Library.CrossCutting.Interop.Dto;
 using Hbsis.Library.CrossCutting.Interop.ViewModel;
 using Hbsis.Library.Data.Context;
@@ -10,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hbsis.Library.CrossCutting.Filter.Base;
 
 namespace Hbsis.Library.Data.RepositoryReadOnly.Base
 {
@@ -25,12 +25,12 @@ namespace Hbsis.Library.Data.RepositoryReadOnly.Base
 
         public async Task<T> Find(Guid id)
         {
-            return await Context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException();
+            return await Context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException("no records found");
         }
 
         public virtual async Task<T> Find(Guid id, DataContext context)
         {
-            return await context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException();
+            return await context.Set<T>().FirstOrDefaultAsync(f => f.Id.Equals(id) && f.Active) ?? throw new NotFoundException("no records found");
         }
 
         public virtual async Task<List<T>> All()

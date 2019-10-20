@@ -9,7 +9,8 @@ namespace Hbsis.Library.Data.Context
 {
     public class DataContext : DbContext
     {
-        public DbSet<Book> Book { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

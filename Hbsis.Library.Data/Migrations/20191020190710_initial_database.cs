@@ -24,12 +24,31 @@ namespace Hbsis.Library.Data.Migrations
                 {
                     table.PrimaryKey("PK_Book", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    Active = table.Column<bool>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Book");
+
+            migrationBuilder.DropTable(
+                name: "User");
         }
     }
 }

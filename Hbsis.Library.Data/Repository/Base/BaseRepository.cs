@@ -1,10 +1,12 @@
 ﻿using Hbsis.Library.CrossCutting.Exceptions;
 using Hbsis.Library.Data.Context;
 using Hbsis.Library.Data.Repository.Contracts;
+using Hbsis.Library.Domain;
 using Hbsis.Library.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -61,7 +63,7 @@ namespace Hbsis.Library.Data.Repository.Base
             var obj = await context.Set<T>().FirstAsync(f => f.Id.Equals(id));
             obj.Active = false;
             SetValue(obj, context);
-            await Context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
 
         public DataContext GetContext()
