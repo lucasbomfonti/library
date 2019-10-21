@@ -1,4 +1,5 @@
-﻿using Hbsis.Library.Api.Controllers.Base;
+﻿using System.Net;
+using Hbsis.Library.Api.Controllers.Base;
 using Hbsis.Library.Api.Security;
 using Hbsis.Library.Application.Contracts;
 using Hbsis.Library.CrossCutting.Filter.Base;
@@ -18,6 +19,9 @@ namespace Hbsis.Library.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(LoginDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public ActionResult Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
