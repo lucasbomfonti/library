@@ -1,6 +1,6 @@
 ﻿using Hbsis.Library.Application.Contracts.Base;
+using Hbsis.Library.CrossCutting.Extensions;
 using Hbsis.Library.CrossCutting.Filter.Base;
-using Hbsis.Library.CrossCutting.Helper;
 using Hbsis.Library.CrossCutting.Interop.Base;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Hbsis.Library.Api.Controllers.Base
 {
-
     public class BaseController<T, TF, TDto, TListDto, TInsertViewModel, TUpdateViewModel> : ControllerBase where T : class
                                                                                                             where TF : BaseFilter
                                                                                                             where TListDto : class
@@ -35,7 +34,6 @@ namespace Hbsis.Library.Api.Controllers.Base
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrors());
-
             return await Application.Update(viewModel);
         }
 

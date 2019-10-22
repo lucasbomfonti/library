@@ -1,5 +1,6 @@
 ﻿using Hbsis.Library.Application.Contracts.Base;
 using Hbsis.Library.Business.Service.Contracts;
+using Hbsis.Library.CrossCutting.Filter.Base;
 using Hbsis.Library.CrossCutting.Helper;
 using Hbsis.Library.CrossCutting.Interop.Base;
 using Hbsis.Library.CrossCutting.Interop.Dto;
@@ -10,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Hbsis.Library.CrossCutting.Filter.Base;
 
 namespace Hbsis.Library.Application.Base
 {
@@ -30,20 +30,20 @@ namespace Hbsis.Library.Application.Base
             Service = service;
             BaseRepositoryReadOnly = baseRepositoryReadOnly;
         }
-            
-        public async Task<ActionResult> Create(TInsertViewModel dto)
+
+        public virtual async Task<ActionResult> Create(TInsertViewModel dto)
         {
             var response = await Service.Create(MapperHelper.Map<TInsertViewModel, T>(dto));
             return await Task.FromResult(new ObjectResult(response) { StatusCode = (int?)HttpStatusCode.OK });
         }
 
-        public async Task<ActionResult> Find(Guid id) => await Response(await BaseRepositoryReadOnly.Find(id), HttpStatusCode.OK);
+        public virtual async Task<ActionResult> Find(Guid id) => await Response(await BaseRepositoryReadOnly.Find(id), HttpStatusCode.OK);
 
-        public async Task<ActionResult> Remove(Guid id) => await Response(Service.Remove(id), HttpStatusCode.NoContent);
+        public virtual async Task<ActionResult> Remove(Guid id) => await Response(Service.Remove(id), HttpStatusCode.NoContent);
 
-        public async Task<ActionResult> Search(int? page = null, int? perPage = null, object filter = null)
+        public virtual async Task<ActionResult> Search(int? page = null, int? perPage = null, object filter = null)
         {
-            if (page.HasValue || perPage.HasValue)
+            if (page.HasValue || perPage.HasValue || filter != null)
             {
                 var response = await Service.Search(new RequestViewModel<TF>(page, perPage, (TF)filter));
                 return await Response((MapperHelper.Map<ResponseDto<T>, ResponseDto<TListDto>>(response)), HttpStatusCode.OK);
@@ -57,8 +57,6 @@ namespace Hbsis.Library.Application.Base
             var obj = await Service.Update(MapperHelper.Map<TUpdateViewModel, T>(dto));
             return await Response(MapperHelper.Map<T, TListDto>(obj), HttpStatusCode.OK);
         }
-
-      
 
         protected virtual async Task<ActionResult> Response(object data, HttpStatusCode code) => await Task.FromResult(new ObjectResult(data) { StatusCode = (int)code });
     }

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Collections.Generic;
 
 namespace Hbsis.Library.Api
 {
@@ -31,6 +33,19 @@ namespace Hbsis.Library.Api
             {
                 c.SwaggerDoc("v1", new Info { Title = "Library", Version = "v1" });
             });
+
+            services.ConfigureSwaggerGen(options =>
+            {
+                options.DocumentFilter<SecurityRequirementsDocumentFilter>();
+                options.AddSecurityDefinition("Authorization",
+                    new ApiKeyScheme
+                    {
+                        Description = "Token received at Login",
+                        Name = "Authorization",
+                        In = "header",
+                        Type = "apiKey"
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +63,21 @@ namespace Hbsis.Library.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Library");
                 c.RoutePrefix = string.Empty;
             });
+        }
+    }
+
+    public class SecurityRequirementsDocumentFilter : IDocumentFilter
+    {
+        public void Apply(SwaggerDocument document, DocumentFilterContext context)
+        {
+            document.Security = new List<IDictionary<string, IEnumerable<string>>>
+            {
+                new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Authorization", new string[]{ } },
+                    { "Value", new string[]{ } },
+                }
+            };
         }
     }
 }

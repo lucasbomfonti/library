@@ -1,13 +1,13 @@
-﻿using System.Net;
-using Hbsis.Library.Api.Controllers.Base;
+﻿using Hbsis.Library.Api.Controllers.Base;
 using Hbsis.Library.Api.Security;
 using Hbsis.Library.Application.Contracts;
+using Hbsis.Library.CrossCutting.Extensions;
 using Hbsis.Library.CrossCutting.Filter.Base;
-using Hbsis.Library.CrossCutting.Helper;
 using Hbsis.Library.CrossCutting.Interop.Dto.User;
 using Hbsis.Library.CrossCutting.Interop.ViewModel.User;
 using Hbsis.Library.Domain;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Hbsis.Library.Api.Controllers
 {
@@ -22,7 +22,7 @@ namespace Hbsis.Library.Api.Controllers
         [ProducesResponseType(typeof(LoginDto), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public ActionResult Login(LoginViewModel model)
+        public ActionResult Login([FromBody]LoginViewModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrors());

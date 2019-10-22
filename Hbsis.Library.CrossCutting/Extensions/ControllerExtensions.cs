@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq;
 
-namespace Hbsis.Library.CrossCutting.Helper
+namespace Hbsis.Library.CrossCutting.Extensions
 {
-    public static class ControllerHelper
+    public static class ControllerExtensions
     {
         public static ErrorResponseDto GetErrors(this ModelStateDictionary modelState)
         {

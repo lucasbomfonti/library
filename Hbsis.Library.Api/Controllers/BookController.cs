@@ -41,7 +41,7 @@ namespace Hbsis.Library.Api.Controllers
         [ProducesResponseType(typeof(Guid), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async new Task<ActionResult> Post([FromBody] BookInsertViewModel viewModel) => await base.Post(viewModel);
+        public new async Task<ActionResult> Post([FromBody] BookInsertViewModel viewModel) => await base.Post(viewModel);
 
         [HttpPut]
         [AccessValidation]
